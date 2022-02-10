@@ -1,10 +1,10 @@
-﻿using IOC.Interfaces;
-using IOC.WpfApp.Interfaces;
+﻿using IOC.Controls.Interfaces;
+using IOC.Interfaces;
 
-namespace IOC.WpfApp
+namespace IOC.Controls
 {
-    internal class Calculator : ICalculator
-    {
+	public class Calculator : ICalculator
+	{
         private readonly ILogger _logger;
 
         public Calculator(ILogger logger)
@@ -12,11 +12,13 @@ namespace IOC.WpfApp
             _logger = logger;
         }
 
-        public void Add(int num1, int num2)
+        public int Add(int num1, int num2)
         {
             int num3 = num1 + num2;
 
             _logger.WriteInfo($"{num1} + {num2} = {num3}");
+
+            return num3;
         }
     }
 }

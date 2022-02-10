@@ -42,10 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container.cs" />
+    <Compile Include="Controls\Calculator.cs" />
+    <Compile Include="Controls\EmailService.cs" />
+    <Compile Include="Controls\Interfaces\ICalculator.cs" />
+    <Compile Include="Controls\Interfaces\IEmailService.cs" />
+    <Compile Include="Controls\Interfaces\IUsersController.cs" />
+    <Compile Include="Controls\UsersController.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
-    <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Controls\Interfaces\ILogger.cs" />
     <Compile Include="LifecycleType.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="Controls\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

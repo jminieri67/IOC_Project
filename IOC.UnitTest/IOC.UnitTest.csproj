@@ -49,12 +49,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClasses\Interfaces\IMyTestClassC.cs" />
-    <Compile Include="TestClasses\Interfaces\IMyTestClassB.cs" />
-    <Compile Include="TestClasses\Interfaces\IMyTestClassA.cs" />
-    <Compile Include="TestClasses\MyTestClassC.cs" />
-    <Compile Include="TestClasses\MyTestClassB.cs" />
-    <Compile Include="TestClasses\MyTestClassA.cs" />
     <Compile Include="IOCTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using IOC.Interfaces;
+﻿using IOC.Controls;
+using IOC.Controls.Interfaces;
 using IOC.UnitTest.TestClasses;
 using IOC.UnitTest.TestClasses.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,31 +11,44 @@ namespace IOC.UnitTest
 	[TestClass]
 	public class IOCTest
 	{
-		private Container _testContainer;
-
-		public IOCTest()
-		{
-			_testContainer = new Container("TestContainer");
-			_testContainer.Register<ILogger, Logger>(LifecycleType.Singleton);
-			_testContainer.Register<IMyTestClassA, MyTestClassA>();
-			_testContainer.Register<IMyTestClassB, MyTestClassB>();
-		}
-
-
 		[TestMethod]
 		public void TestMethod1()
 		{
-			MyTestClassA myTestClassA = (MyTestClassA)_testContainer.Resolve<IMyTestClassA>();
+			Container container = new Container("Container");
+			container.Register<ILogger, Logger>(LifecycleType.Singleton);
+			container.Register<ICalculator, Calculator>();
+			Calculator calculator = (Calculator)container.Resolve<ICalculator>();
 
-			bool didSomething = myTestClassA.DoSomething();
+			int result = calculator.Add(4, 89);
 
-			Assert.IsTrue(didSomething);
+			Assert.AreEqual(93, result);
 		}
 
 		[TestMethod]
 		public void TestMethod2()
 		{
-			Assert.ThrowsException<Exception>(() => (MyTestClassC)_testContainer.Resolve<IMyTestClassC>());
+			Container container = new Container("Container");
+			container.Register<ILogger, Logger>(LifecycleType.Singleton);
+
+			Assert.ThrowsException<Exception>(() => (EmailService)container.Resolve<IEmailService>());
+		}
+
+		[TestMethod]
+		public void TestMethod3()
+		{
+			Container container = new Container("Container");
+
+			container.Register<ILogger, Logger>(LifecycleType.Singleton);
+			container.Register<IUsersController, UsersController>();
+			container.Register<ICalculator, Calculator>();
+			container.Register<IEmailService, EmailService>();
+
+			UsersController usersController = (UsersController)container.Resolve<IUsersController>();
+
+			Assert.IsNotNull(usersController);
+			Assert.IsNotNull(usersController.Calculator);
+			Assert.IsNotNull(usersController.EmailService);
+			Assert.IsNotNull(usersController.Logger);
 		}
 	}
 }

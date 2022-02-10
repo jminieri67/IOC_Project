@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IOC.Interfaces
+namespace IOC.Controls.Interfaces
 {
     public interface ILogger
     {

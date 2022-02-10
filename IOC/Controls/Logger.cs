@@ -1,10 +1,10 @@
-﻿using IOC.Interfaces;
+﻿using IOC.Controls.Interfaces;
 using System;
 using System.Diagnostics;
 
-namespace IOC
+namespace IOC.Controls
 {
-    public class Logger : ILogger
+	public class Logger : ILogger
     {
         public Logger()
 		{
