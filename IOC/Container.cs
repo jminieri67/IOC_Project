@@ -138,6 +138,41 @@ namespace IOC
 		}
 
 		/// <summary>
+		/// Removes the specified type from all mappings.
+		/// </summary>
+		/// <param name="type">Interface</param>
+		/// <returns>True or false</returns>
+		/// <exception cref="Exception"></exception>
+		public bool Dispose(Type type)
+		{
+			bool isDisposed = false;
+
+			try
+			{
+				LifecycleType lifecycleType = GetLifecycleType(type);
+
+				switch (lifecycleType)
+				{
+					case LifecycleType.Transient:
+						_transientMap.Remove(type);
+						break;
+					case LifecycleType.Singleton:
+						_singletonMap.Remove(type);
+						break;
+				}
+
+				_lifecycleTypeMap.Remove(type);
+				isDisposed = true;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Object instance for {type.Name} could not be disposed", ex);
+			}
+
+			return isDisposed;
+		}
+
+		/// <summary>
 		/// Resolves the instance for the given type
 		/// </summary>
 		/// <param name="type"></param>

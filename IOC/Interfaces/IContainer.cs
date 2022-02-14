@@ -9,5 +9,7 @@ namespace IOC.Interfaces
         void AddSingleton<From, To>();
         T Resolve<T>();
         object Create(Type type);
+
+        bool Dispose(Type type);
     }
 }
