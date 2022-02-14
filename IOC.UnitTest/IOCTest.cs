@@ -1,7 +1,5 @@
 ﻿using IOC.Controls;
 using IOC.Controls.Interfaces;
-using IOC.UnitTest.TestClasses;
-using IOC.UnitTest.TestClasses.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
